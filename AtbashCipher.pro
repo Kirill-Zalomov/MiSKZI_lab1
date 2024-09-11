@@ -10,10 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    controller/controller.cpp
+    controller/controller.cpp \
+    model/atbash_cipher.cpp
 
 HEADERS += \
-    controller/controller.h
+    controller/controller.h \
+    model/atbash_cipher.h
 
 FORMS += \
     view/mainwindow.ui

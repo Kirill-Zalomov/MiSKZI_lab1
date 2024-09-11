@@ -18,6 +18,11 @@ public:
     Controller(QWidget *parent = nullptr);
     ~Controller();
 
+private slots:
+    void on_pushButton_cipher_clicked();
+
+    void on_pushButton_decipher_clicked();
+
 private:
     Ui::Controller *ui;
 };
