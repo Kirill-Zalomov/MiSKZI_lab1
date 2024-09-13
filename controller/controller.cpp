@@ -8,6 +8,7 @@ Controller::Controller(QWidget *parent) : QMainWindow(parent) {
     ui->setupUi(this);
 }
 
+
 Controller::~Controller() {
     delete ui;
 }
@@ -29,4 +30,3 @@ void Controller::on_pushButton_decipher_clicked() {
     QString decryptedText = cipher.decrypt(cipherText);
     this->ui->textEdit_sourceText->setText(decryptedText);
 }
-
