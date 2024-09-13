@@ -3,17 +3,14 @@
 
 
 #include <QString>
-#include <QVector>
+#include <QChar>
 
 
 class AtbashCipher {
 public:
-    AtbashCipher(const QVector<int>& shifts);
+    AtbashCipher();
     QString encrypt(const QString& plaintext);
     QString decrypt(const QString& ciphertext);
-
-private:
-    QVector<int> _shifts;
 };
 
 

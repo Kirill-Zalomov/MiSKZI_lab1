@@ -14,8 +14,7 @@ Controller::~Controller() {
 
 
 void Controller::on_pushButton_cipher_clicked() {
-    QVector<int> shifts = {3, 5, 1};
-    AtbashCipher cipher(shifts);
+    AtbashCipher cipher {};
 
     QString sourceText = this->ui->textEdit_sourceText->toPlainText();
     QString cipherText = cipher.encrypt(sourceText);
@@ -24,8 +23,7 @@ void Controller::on_pushButton_cipher_clicked() {
 
 
 void Controller::on_pushButton_decipher_clicked() {
-    QVector<int> shifts = {3, 5, 1};
-    AtbashCipher cipher(shifts);
+    AtbashCipher cipher {};
 
     QString cipherText = this->ui->textEdit_cipherText->toPlainText();
     QString decryptedText = cipher.decrypt(cipherText);
