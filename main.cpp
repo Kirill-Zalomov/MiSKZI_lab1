@@ -1,11 +1,13 @@
 #include "controller.h"
 
+
 #include <QApplication>
 
-int main(int argc, char *argv[])
-{
-    QApplication a(argc, argv);
-    Controller w;
-    w.show();
-    return a.exec();
+
+int main(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+    Controller mainWindow;
+
+    mainWindow.show();
+    return application.exec();
 }

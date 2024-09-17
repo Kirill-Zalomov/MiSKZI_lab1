@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     controller/controller.cpp \
-    model/atbash_cipher.cpp
+    model/atbash_cipher.cpp \
+    model/file_interactor.cpp
 
 HEADERS += \
     controller/controller.h \
-    model/atbash_cipher.h
+    model/atbash_cipher.h \
+    model/file_interactor.h
 
 FORMS += \
     view/mainwindow.ui

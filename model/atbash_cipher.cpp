@@ -1,31 +1,34 @@
 #include "atbash_cipher.h"
 
 
-AtbashCipher::AtbashCipher() {}
+AtbashCipher::AtbashCipher(QObject *parent) : QObject(parent) {}
 
 
-QString AtbashCipher::encrypt(const QString& input) {
+QString AtbashCipher::encrypt(const QString& input, const qint8& key) const {
+    const QString russianAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+    const QString secondAlphabet = "!@#$%^&*()_+-=\\|~`[]{};:'\",<>?/№\t";
+
     QString output;
-    for (QChar c : input) {
-        if (c.isLetter()) {
-            quint32 unicode = c.unicode();
-            // Шифровка строчной буквы кириллического алфавита
-            if (unicode >= 0x0430 && unicode <= 0x044F) unicode = 0x087F - unicode;
-            // Шифровка прописной буквы кириллического алфавита
-            else if (unicode >= 0x0410 && unicode <= 0x042F) unicode = 0x083F - unicode;
-            // Шифровка строчной английской буквы
-            else if (unicode >= 'a' && unicode <= 'z') unicode = 'z' - (unicode - 'a');
-            // Шифровка прописной английской буквы
-            else if (unicode >= 'A' && unicode <= 'Z') unicode = 'Z' - (unicode - 'A');
-            else if (unicode >= '0' && unicode <= '9') unicode = '9' - (unicode - '0');
-            c = QChar(unicode);
+
+    for (qint32 i = 0; i < input.length(); i++) {
+        QChar currentSymbol = input[i];
+        if (russianAlphabet.contains(currentSymbol)) {
+            int index = russianAlphabet.indexOf(currentSymbol);
+            int encryptedIndex = russianAlphabet.length() - index - 1;
+            // Apply the second alphabet complication with key-based shifting
+            int shiftedIndex = (encryptedIndex + key) % secondAlphabet.length();
+            output += secondAlphabet[shiftedIndex];
+        } else if (currentSymbol == ' ') {
+            output += ' ';
+        } else if (currentSymbol == '.') {
+            output += '.';
         }
-        output.append(c);
     }
+
     return output;
 }
 
 
-QString AtbashCipher::decrypt(const QString& ciphertext) {
-    return encrypt(ciphertext);
+inline QString AtbashCipher::decrypt(const QString& input, const qint8& key) const {
+
 }

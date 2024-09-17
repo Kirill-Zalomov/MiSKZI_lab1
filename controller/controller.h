@@ -3,6 +3,14 @@
 
 
 #include <QMainWindow>
+#include <QFileDialog>
+#include <QStandardPaths>
+#include <QScreen>
+
+
+#include "atbash_cipher.h"
+#include "file_interactor.h"
+#include <QDebug>
 
 
 QT_BEGIN_NAMESPACE
@@ -20,8 +28,9 @@ public:
 
 private slots:
     void on_pushButton_cipher_clicked();
-
     void on_pushButton_decipher_clicked();
+    void on_button_chooseSourceFile_clicked();
+    void on_button_chooseResultFile_clicked();
 
 private:
     Ui::Controller *ui;

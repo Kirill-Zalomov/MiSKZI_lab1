@@ -6,27 +6,47 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>720</width>
-    <height>480</height>
+    <width>450</width>
+    <height>180</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>720</width>
-    <height>480</height>
+    <width>450</width>
+    <height>180</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>450</width>
+    <height>180</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Модифицированный шифр Атбаша</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <widget class="QLabel" name="label">
+        <property name="text">
+         <string>Исходный файл:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLabel" name="label">
+         <widget class="QLineEdit" name="lineEdit_sourceFilePath">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="button_chooseSourceFile">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -35,25 +55,44 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
-            <height>30</height>
+            <width>70</width>
+            <height>0</height>
            </size>
           </property>
           <property name="text">
-           <string>Исходный текст:</string>
+           <string>Выбрать..</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Файл результата:</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="lineEdit_resultFilePath">
+          <property name="readOnly">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QTextEdit" name="textEdit_sourceText">
-          <property name="cursor" stdset="0">
-           <cursorShape>IBeamCursor</cursorShape>
+         <widget class="QPushButton" name="button_chooseResultFile">
+          <property name="text">
+           <string>Выбрать..</string>
           </property>
          </widget>
         </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QPushButton" name="pushButton_cipher">
           <property name="sizePolicy">
@@ -76,49 +115,20 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox">
+          <property name="text">
+           <string>Добавить расширение *.enc</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="label_2">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>30</height>
-           </size>
-          </property>
-          <property name="text">
-           <string>Зашифрованный текст:</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QTextEdit" name="textEdit_cipherText">
-          <property name="cursor" stdset="0">
-           <cursorShape>IBeamCursor</cursorShape>
-          </property>
-          <property name="readOnly">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="QPushButton" name="pushButton_decipher">
           <property name="sizePolicy">
@@ -138,6 +148,16 @@
           </property>
           <property name="text">
            <string>Расшифровать</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="checkBox_2">
+          <property name="text">
+           <string>Добавить расширение *.dec</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

@@ -2,15 +2,17 @@
 #define ATBASH_CIPHER_H
 
 
-#include <QString>
-#include <QChar>
+#include <QObject>
+#include <QByteArray>
 
 
-class AtbashCipher {
+class AtbashCipher : public QObject {
+    Q_OBJECT
+
 public:
-    AtbashCipher();
-    QString encrypt(const QString& plaintext);
-    QString decrypt(const QString& ciphertext);
+    explicit AtbashCipher(QObject *parent = nullptr);
+    QString encrypt(const QString& input, const qint8& key) const;
+    QString decrypt(const QString& input, const qint8& key) const;
 };
 
 
