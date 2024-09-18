@@ -39,3 +39,9 @@ bool FileInteractor::writeContentInFile(const QString& filepath, const QString& 
 
     return true;
 }
+
+
+void FileInteractor::deleteFile(const QString &filepath) {
+    QFile fileToDelete(filepath);
+    if(fileToDelete.exists()) fileToDelete.remove();
+}

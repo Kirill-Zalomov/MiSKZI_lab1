@@ -14,7 +14,8 @@ class FileInteractor : public QObject {
 public:
     explicit FileInteractor(QObject *parent = nullptr);
     QString readContentFromFile(const QString& filepath) const;
-    bool writeContentInFile(const QString &filePath, const QString &content, const bool &rewrite) const;
+    bool writeContentInFile(const QString &filepath, const QString &content, const bool &rewrite) const;
+    void deleteFile(const QString &filepath);
 };
 
 

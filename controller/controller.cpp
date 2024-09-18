@@ -34,15 +34,19 @@ void Controller::on_pushButton_cipher_clicked() {
 
     AtbashCipher cipher {};
     FileInteractor fileInteractor{};
+    quint8 encryptionKey = static_cast<quint8>(this->ui->spinBox_encryptionKey->value());
 
-    QString encryptedText = cipher.encrypt(fileInteractor.readContentFromFile(this->ui->lineEdit_sourceFilePath->text()), 0x04);
+    QString encryptedText = cipher.encrypt(fileInteractor.readContentFromFile(this->ui->lineEdit_sourceFilePath->text()), encryptionKey);
     if (encryptedText.isEmpty()) return;
 
     QString pathToResultFile = this->ui->lineEdit_resultFilePath->text();
-    if (this->ui->checkBox_addEncExtension->checkState() == Qt::Checked) pathToResultFile += ".enc";
+    if (this->ui->checkBox_addEncExtension->checkState() == Qt::Checked) {
+        fileInteractor.deleteFile(pathToResultFile);
+        pathToResultFile += ".enc";
+    }
 
     fileInteractor.writeContentInFile(pathToResultFile, encryptedText, true);
-    QMessageBox::information(nullptr, "Сообщение", "Исходный файл успешно зашифрован\nи записан в файл результата.");
+    this->setStatusBarText("Исходный файл успешно зашифрован.");
 }
 
 
@@ -54,12 +58,16 @@ void Controller::on_pushButton_decipher_clicked() {
 
     AtbashCipher cipher {};
     FileInteractor fileInteractor{};
+    quint8 decryptionKey = static_cast<quint8>(this->ui->spinBox_encryptionKey->value());
 
-    QString decryptedText = cipher.decrypt(fileInteractor.readContentFromFile(this->ui->lineEdit_sourceFilePath->text()), 0x04);
+    QString decryptedText = cipher.decrypt(fileInteractor.readContentFromFile(this->ui->lineEdit_sourceFilePath->text()), decryptionKey);
     if(decryptedText.isEmpty()) return;
 
     QString pathToResultFile = this->ui->lineEdit_resultFilePath->text();
-    if (this->ui->checkBox_addEncExtension->checkState() == Qt::Checked) pathToResultFile += ".dec";
+    if (this->ui->checkBox_addEncExtension->checkState() == Qt::Checked) {
+        fileInteractor.deleteFile(pathToResultFile);
+        pathToResultFile += ".dec";
+    }
 
     fileInteractor.writeContentInFile(pathToResultFile, decryptedText, true);
     this->setStatusBarText("Исходный файл расшифрован.");

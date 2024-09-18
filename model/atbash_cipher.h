@@ -15,8 +15,8 @@ class AtbashCipher : public QObject {
 
 public:
     explicit AtbashCipher(QObject *parent = nullptr);
-    QString encrypt(const QString& input, const qint8& key) const;
-    QString decrypt(const QString& input, const qint8& key) const;
+    QString encrypt(const QString& input, const quint8& key) const;
+    QString decrypt(const QString& input, const quint8& key) const;
 };
 
 
