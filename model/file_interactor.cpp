@@ -21,9 +21,16 @@ QString FileInteractor::readContentFromFile(const QString& filepath) const {
 
 bool FileInteractor::writeContentInFile(const QString& filepath, const QString& content, const bool &rewrite) const {
     QFile file(filepath);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QMessageBox::critical(nullptr, "Ошибка", "Не удалось произвести запись в файл результата.\nВозможно, файл не существует или у программы нет прав на запись файла.");
-        return false;
+    if (rewrite) {
+        if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+            QMessageBox::critical(nullptr, "Ошибка", "Не удалось произвести запись в файл результата.\nВозможно, файл не существует или у программы нет прав на запись файла.");
+            return false;
+        }
+    } else {
+        if (!file.open(QIODevice::Append | QIODevice::Text)) {
+            QMessageBox::critical(nullptr, "Ошибка", "Не удалось произвести запись в файл результата.\nВозможно, файл не существует или у программы нет прав на запись файла.");
+            return false;
+        }
     }
 
     QTextStream outputTextStream(&file);

@@ -32,6 +32,10 @@ private slots:
     void on_button_chooseSourceFile_clicked();
     void on_button_chooseResultFile_clicked();
 
+    void moveWindowToCenterOfDisplay();
+    bool isBothFilesSelected();
+    void setStatusBarText(const QString &text);
+
 private:
     Ui::Controller *ui;
 };

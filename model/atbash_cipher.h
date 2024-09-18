@@ -6,6 +6,10 @@
 #include <QByteArray>
 
 
+const static QString russianAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+const static QString secondAlphabet = "!@#$%^&*()_+-=\\|~`[]{};:'\",<>?/№\t";
+
+
 class AtbashCipher : public QObject {
     Q_OBJECT
 
