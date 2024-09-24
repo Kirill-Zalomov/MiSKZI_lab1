@@ -103,3 +103,14 @@ bool Controller::isBothFilesSelected() {
 inline void Controller::setStatusBarText(const QString &text) {
     this->ui->label_statusBar->setText("Строка состояния: " + text);
 }
+
+
+void Controller::on_button_chooseFrequencyDictionary_clicked() {
+
+}
+
+
+void Controller::on_button_startFrequencyAnalysis_clicked() {
+
+}
+
