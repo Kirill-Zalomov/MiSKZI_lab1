@@ -12,12 +12,16 @@ SOURCES += \
     main.cpp \
     controller/controller.cpp \
     model/atbash_cipher.cpp \
-    model/file_interactor.cpp
+    model/file_interactor.cpp \
+    model/frequency_analyzer.cpp \
+    model/frequency_dictionary_parser.cpp
 
 HEADERS += \
     controller/controller.h \
     model/atbash_cipher.h \
-    model/file_interactor.h
+    model/file_interactor.h \
+    model/frequency_analyzer.h \
+    model/frequency_dictionary_parser.h
 
 FORMS += \
     view/mainwindow.ui

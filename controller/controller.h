@@ -36,6 +36,12 @@ private slots:
     bool isBothFilesSelected();
     void setStatusBarText(const QString &text);
 
+    void on_pushButton_clicked();
+
+    void on_button_chooseFrequencyDictionary_clicked();
+
+    void on_button_startFrequencyAnalysis_clicked();
+
 private:
     Ui::Controller *ui;
 };
