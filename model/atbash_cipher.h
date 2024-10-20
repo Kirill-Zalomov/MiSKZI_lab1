@@ -7,7 +7,7 @@
 
 
 const static QString russianAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-const static QString secondAlphabet = "!@#$%^&*()_+-=\\|~`[]{};:'\",<>?/№\t";
+const static QString secondAlphabet  = "\t!\"#$%&'()*+,-/:;<=>?@[\\]^_`{|}~№";
 
 
 class AtbashCipher : public QObject {
